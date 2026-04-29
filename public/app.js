@@ -50,7 +50,7 @@ const PRODUCTS = [
     category: "Tables",
     price: "$899",
     desc: "Live-edge walnut top on hairpin legs. Seats 6. Organic yet refined.",
-    model: "models/table.glb",       // ← REAL furniture model
+    model: "models/dining_table.glb",       // ← REAL furniture model
     cameraOrbit: "-20deg 65deg 2.2m",
     icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
              <rect x="6" y="22" width="52" height="10" rx="3"/>
@@ -66,7 +66,7 @@ const PRODUCTS = [
     category: "Storage",
     price: "$199",
     desc: "Minimalist wall-mounted shelf unit, powder-coated steel + oak.",
-    model: "models/table.glb",       // reuses table model as fallback
+    model: "models/floating_wall_shelf_unit.glb",       // reuses table model as fallback
     cameraOrbit: "0deg 70deg 2m",
     icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
              <rect x="4" y="12" width="56" height="8" rx="2"/>
