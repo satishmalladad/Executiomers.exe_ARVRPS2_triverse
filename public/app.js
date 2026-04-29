@@ -8,7 +8,6 @@
 
 // ══════════════════════════════════════════════════════
 // ① PRODUCT CATALOG DATA
-//    ONLY real furniture models — no astronauts, no robots
 // ══════════════════════════════════════════════════════
 const PRODUCTS = [
   {
@@ -17,15 +16,9 @@ const PRODUCTS = [
     category: "Seating",
     price: "$1,249",
     desc: "Low-profile sectional in oatmeal boucle. Perfect for open-plan living.",
-    model: "models/sofa.glb",        // ← REAL furniture model
+    model: "models/sofa.glb",
     cameraOrbit: "0deg 80deg 2.5m",
-    icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
-             <rect x="6" y="28" width="52" height="18" rx="4"/>
-             <rect x="6" y="22" width="12" height="24" rx="3"/>
-             <rect x="46" y="22" width="12" height="24" rx="3"/>
-             <rect x="14" y="46" width="8" height="8" rx="2"/>
-             <rect x="42" y="46" width="8" height="8" rx="2"/>
-           </svg>`,
+    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80",
   },
   {
     id: "chair-01",
@@ -33,16 +26,9 @@ const PRODUCTS = [
     category: "Seating",
     price: "$489",
     desc: "Mid-century shell form with walnut legs. Statement piece for any corner.",
-    model: "models/chair.glb",       // ← REAL furniture model
+    model: "models/chair.glb",
     cameraOrbit: "30deg 75deg 1.8m",
-    icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
-             <rect x="14" y="24" width="36" height="18" rx="5"/>
-             <rect x="14" y="22" width="8" height="20" rx="3"/>
-             <line x1="18" y1="42" x2="14" y2="56"/>
-             <line x1="46" y1="42" x2="50" y2="56"/>
-             <line x1="22" y1="42" x2="20" y2="56"/>
-             <line x1="42" y1="42" x2="44" y2="56"/>
-           </svg>`,
+    image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=600&q=80",
   },
   {
     id: "table-01",
@@ -50,15 +36,9 @@ const PRODUCTS = [
     category: "Tables",
     price: "$899",
     desc: "Live-edge walnut top on hairpin legs. Seats 6. Organic yet refined.",
-    model: "models/dining_table.glb",       // ← REAL furniture model
+    model: "models/dining_table.glb",
     cameraOrbit: "-20deg 65deg 2.2m",
-    icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
-             <rect x="6" y="22" width="52" height="10" rx="3"/>
-             <line x1="14" y1="32" x2="12" y2="54"/>
-             <line x1="50" y1="32" x2="52" y2="54"/>
-             <line x1="22" y1="32" x2="21" y2="54"/>
-             <line x1="42" y1="32" x2="43" y2="54"/>
-           </svg>`,
+    image: "https://images.unsplash.com/photo-1617098900591-3f90928e8c54?w=600&q=80",
   },
   {
     id: "shelf-01",
@@ -66,122 +46,83 @@ const PRODUCTS = [
     category: "Storage",
     price: "$199",
     desc: "Minimalist wall-mounted shelf unit, powder-coated steel + oak.",
-    model: "models/floating_wall_shelf_unit.glb",       // reuses table model as fallback
+    model: "models/floating_wall_shelf_unit.glb",
     cameraOrbit: "0deg 70deg 2m",
-    icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
-             <rect x="4" y="12" width="56" height="8" rx="2"/>
-             <rect x="4" y="28" width="56" height="8" rx="2"/>
-             <rect x="4" y="44" width="56" height="8" rx="2"/>
-             <line x1="10" y1="20" x2="10" y2="28"/>
-             <line x1="54" y1="20" x2="54" y2="28"/>
-             <line x1="10" y1="36" x2="10" y2="44"/>
-             <line x1="54" y1="36" x2="54" y2="44"/>
-           </svg>`,
+    image: "https://images.unsplash.com/photo-1597072689227-8882273e8f6a?w=600&q=80",
   },
   {
-  id: "lamp-01",
-  name: "Arc Floor Lamp",
-  category: "Lighting",
-  price: "$129",
-  desc: "Minimalist arc lamp with brass finish. Perfect bedside or reading light.",
-  model: "models/floor_lamp.glb",
-  cameraOrbit: "0deg 75deg 1.5m",
-  icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
-           <line x1="32" y1="56" x2="32" y2="20"/>
-           <path d="M32 20 Q48 20 48 10 Q48 4 32 4 Q16 4 16 10 Q16 20 32 20"/>
-           <ellipse cx="32" cy="56" rx="12" ry="3"/>
-         </svg>`,
-},
-{
-  id: "bed-01",
-  name: "Oslo Platform Bed",
-  category: "Bedroom",
-  price: "$799",
-  desc: "Low-profile king bed in walnut veneer. Clean Scandinavian lines.",
-  model: "models/platform_bed.glb",
-  cameraOrbit: "-20deg 70deg 3m",
-  icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
-           <rect x="4" y="32" width="56" height="20" rx="3"/>
-           <rect x="4" y="24" width="56" height="10" rx="2"/>
-           <rect x="6" y="14" width="20" height="18" rx="3"/>
-           <rect x="38" y="14" width="20" height="18" rx="3"/>
-           <line x1="10" y1="52" x2="10" y2="58"/>
-           <line x1="54" y1="52" x2="54" y2="58"/>
-         </svg>`,
-},
-{
-  id: "plant-01",
-  name: "Fiddle Leaf Fig",
-  category: "Decor",
-  price: "$49",
-  desc: "Large indoor plant in a terracotta pot. Brings life to any corner.",
-  model: "models/plant.glb",
-  cameraOrbit: "0deg 75deg 1.8m",
-  icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
-           <path d="M32 52 Q32 30 20 18 Q32 22 38 14 Q36 28 32 52"/>
-           <path d="M32 52 Q32 36 44 24 Q44 38 32 52"/>
-           <rect x="22" y="50" width="20" height="10" rx="3"/>
-         </svg>`,
-},
-{
-  id: "tvstand-01",
-  name: "Media Console",
-  category: "Living Room",
-  price: "$349",
-  desc: "Floating TV unit with oak drawers. Fits TVs up to 65 inches.",
-  model: "models/tv_stand.glb",
-  cameraOrbit: "0deg 65deg 2.5m",
-  icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
-           <rect x="4" y="30" width="56" height="18" rx="3"/>
-           <rect x="8" y="34" width="20" height="10" rx="2"/>
-           <rect x="36" y="34" width="20" height="10" rx="2"/>
-           <line x1="14" y1="48" x2="14" y2="56"/>
-           <line x1="50" y1="48" x2="50" y2="56"/>
-         </svg>`,
-},
-{
-  id: "wardrobe-01",
-  name: "Hinoki Wardrobe",
-  category: "Bedroom",
-  price: "$649",
-  desc: "3-door wardrobe in natural hinoki wood with soft-close hinges.",
-  model: "models/wardrobe.glb",
-  cameraOrbit: "15deg 75deg 3m",
-  icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
-           <rect x="6" y="8" width="52" height="52" rx="2"/>
-           <line x1="32" y1="8" x2="32" y2="60"/>
-           <circle cx="28" cy="34" r="2" fill="currentColor"/>
-           <circle cx="36" cy="34" r="2" fill="currentColor"/>
-         </svg>`,
-},
-{
-  id: "desk-01",
-  name: "Studio Writing Desk",
-  category: "Office",
-  price: "$299",
-  desc: "Compact work desk with cable management. Ideal for home offices.",
-  model: "models/desk.glb",
-  cameraOrbit: "-10deg 70deg 2m",
-  icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
-           <rect x="4" y="24" width="56" height="8" rx="2"/>
-           <line x1="10" y1="32" x2="8" y2="56"/>
-           <line x1="54" y1="32" x2="56" y2="56"/>
-           <rect x="36" y="32" width="16" height="14" rx="2"/>
-         </svg>`,
-},
+    id: "lamp-01",
+    name: "Arc Floor Lamp",
+    category: "Lighting",
+    price: "$129",
+    desc: "Minimalist arc lamp with brass finish. Perfect bedside or reading light.",
+    model: "models/desk_lamp.glb",
+    cameraOrbit: "0deg 75deg 1.5m",
+    image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&q=80",
+  },
+  {
+    id: "bed-01",
+    name: "Oslo Platform Bed",
+    category: "Bedroom",
+    price: "$799",
+    desc: "Low-profile king bed in walnut veneer. Clean Scandinavian lines.",
+    model: "models/platform_bed.glb",
+    cameraOrbit: "-20deg 70deg 3m",
+    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80",
+  },
+  {
+    id: "plant-01",
+    name: "Fiddle Leaf Fig",
+    category: "Decor",
+    price: "$49",
+    desc: "Large indoor plant in a terracotta pot. Brings life to any corner.",
+    model: "models/plant.glb",
+    cameraOrbit: "0deg 75deg 1.8m",
+    image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80",
+  },
+  {
+    id: "tvstand-01",
+    name: "Media Console",
+    category: "Living Room",
+    price: "$349",
+    desc: "Floating TV unit with oak drawers. Fits TVs up to 65 inches.",
+    model: "models/tv_stand.glb",
+    cameraOrbit: "0deg 65deg 2.5m",
+    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80",
+  },
+  {
+    id: "wardrobe-01",
+    name: "Hinoki Wardrobe",
+    category: "Bedroom",
+    price: "$649",
+    desc: "3-door wardrobe in natural hinoki wood with soft-close hinges.",
+    model: "models/wardrobe.glb",
+    cameraOrbit: "15deg 75deg 3m",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+  },
+  {
+    id: "desk-01",
+    name: "Studio Writing Desk",
+    category: "Office",
+    price: "$299",
+    desc: "Compact work desk with cable management. Ideal for home offices.",
+    model: "models/desk.glb",
+    cameraOrbit: "-10deg 70deg 2m",
+    image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=600&q=80",
+  },
 ];
 
 // ══════════════════════════════════════════════════════
 // ② STATE
 // ══════════════════════════════════════════════════════
-let currentProduct   = null;   // currently loaded product object
-let currentScale     = 1.0;    // current model scale multiplier
-let currentRotationY = 0;      // cumulative Y rotation in degrees
-let autoRotateOn     = true;   // auto-rotate toggle state
-let lastRetryProduct = null;   // for retry on error
+let currentProduct   = null;
+let currentScale     = 1.0;
+let currentRotationY = 0;
+let autoRotateOn     = true;
+let lastRetryProduct = null;
 
 // ══════════════════════════════════════════════════════
-// ③ RENDER CATALOG
+// ③ RENDER CATALOG — with real images
 // ══════════════════════════════════════════════════════
 function renderCatalog() {
   console.log("[RoomVerse] 🛋️  renderCatalog() — building", PRODUCTS.length, "cards");
@@ -189,11 +130,26 @@ function renderCatalog() {
   if (!grid) { console.error("[RoomVerse] ❌ #catalogGrid not found"); return; }
 
   grid.innerHTML = PRODUCTS.map(p => `
-    <article class="product-card" id="card-${p.id}" data-product-id="${p.id}">
+    <article class="product-card" id="card-${p.id}" data-product-id="${p.id}" onclick="openAR('${p.id}', false)">
+
       <div class="card-preview">
-        <div class="card-preview-icon">${p.icon}</div>
+        <img
+          src="${p.image}"
+          alt="${p.name}"
+          class="card-photo"
+          loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        />
+        <div class="card-photo-fallback" style="display:none;">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 8L56 20V44L32 56L8 44V20L32 8Z"/><path d="M32 8V56M8 20L32 32L56 20"/>
+          </svg>
+        </div>
+        <div class="card-photo-overlay"></div>
+        <div class="card-photo-gloss"></div>
         <span class="card-tag">${p.category}</span>
       </div>
+
       <div class="card-body">
         <h3 class="card-name">${p.name}</h3>
         <p class="card-desc">${p.desc}</p>
@@ -201,17 +157,19 @@ function renderCatalog() {
           <span class="card-price">${p.price} <span>USD</span></span>
         </div>
       </div>
+
       <div class="card-actions">
-        <button class="btn-preview" onclick="openAR('${p.id}', false)">
+        <button class="btn-preview" onclick="event.stopPropagation(); openAR('${p.id}', false)">
           Preview 3D
         </button>
-        <button class="btn-ar" onclick="openAR('${p.id}', true)">
+        <button class="btn-ar" onclick="event.stopPropagation(); openAR('${p.id}', true)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M3 7l9-4 9 4v10l-9 4-9-4V7z"/>
           </svg>
           AR View
         </button>
       </div>
+
     </article>
   `).join("");
 
@@ -219,16 +177,11 @@ function renderCatalog() {
 }
 
 // ══════════════════════════════════════════════════════
-// ④ OPEN AR — main entry point for both 3D preview & AR
+// ④ OPEN AR
 // ══════════════════════════════════════════════════════
-/**
- * @param {string}  productId   — id from PRODUCTS array
- * @param {boolean} tryAR       — if true, activate AR immediately after load
- */
 function openAR(productId, tryAR = false) {
   console.log(`[RoomVerse] 🖱️  openAR() called — productId="${productId}", tryAR=${tryAR}`);
 
-  // ── (a) Find product ────────────────────────────────
   const product = PRODUCTS.find(p => p.id === productId);
   if (!product) {
     console.error(`[RoomVerse] ❌ Product "${productId}" not found in catalog`);
@@ -238,34 +191,26 @@ function openAR(productId, tryAR = false) {
 
   console.log(`[RoomVerse] 📦 Loading model: "${product.model}" for "${product.name}"`);
 
-  // ── (b) Update active card state ────────────────────
   document.querySelectorAll(".product-card").forEach(c => c.classList.remove("active-card"));
   const activeCard = document.getElementById(`card-${productId}`);
   if (activeCard) activeCard.classList.add("active-card");
 
-  // ── (c) Scroll viewer into view ─────────────────────
   const viewerSection = document.getElementById("viewer-section");
-  if (viewerSection) {
-    viewerSection.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+  if (viewerSection) viewerSection.scrollIntoView({ behavior: "smooth", block: "start" });
 
-  // ── (d) Store current product & save retry ref ──────
-  currentProduct     = product;
-  lastRetryProduct   = product;
-  currentScale       = 1.0;
-  currentRotationY   = 0;
+  currentProduct   = product;
+  lastRetryProduct = product;
+  currentScale     = 1.0;
+  currentRotationY = 0;
 
-  // ── (e) Show loader, hide placeholder & error ───────
   showLoader(`Loading ${product.name}…`);
   hidePlaceholder();
   hideError();
   hideViewer();
 
-  // ── (f) Update status text ──────────────────────────
   const statusEl = document.getElementById("viewerStatus");
   if (statusEl) statusEl.textContent = `Loading ${product.name}…`;
 
-  // ── (g) Get the model-viewer element ────────────────
   const viewer = document.getElementById("furnitureViewer");
   if (!viewer) {
     console.error("[RoomVerse] ❌ #furnitureViewer element not found");
@@ -273,7 +218,6 @@ function openAR(productId, tryAR = false) {
     return;
   }
 
-  // ── (h) Reset viewer state ──────────────────────────
   viewer.style.display = "none";
   viewer.removeAttribute("src");
   viewer.setAttribute("auto-rotate", "");
@@ -282,18 +226,13 @@ function openAR(productId, tryAR = false) {
   viewer.setAttribute("exposure", "1.1");
   viewer.setAttribute("environment-image", "neutral");
 
-  // ── (i) Set camera orbit if specified ───────────────
-  if (product.cameraOrbit) {
-    viewer.setAttribute("camera-orbit", product.cameraOrbit);
-  }
+  if (product.cameraOrbit) viewer.setAttribute("camera-orbit", product.cameraOrbit);
 
-  // ── (j) Update hotspot label ─────────────────────────
   const mvLabel = document.getElementById("mvProductName");
   if (mvLabel) mvLabel.textContent = product.name;
 
-  // ── (k) Attach load/error event listeners ───────────
   const onLoad = () => {
-    console.log(`[RoomVerse] ✅ Model loaded successfully: "${product.model}"`);
+    console.log(`[RoomVerse] ✅ Model loaded: "${product.model}"`);
     hideLoader();
     showViewer();
     showControls();
@@ -301,21 +240,15 @@ function openAR(productId, tryAR = false) {
     const statusEl2 = document.getElementById("viewerStatus");
     if (statusEl2) statusEl2.textContent = `Viewing: ${product.name}`;
 
-    // Reset scale display
     updateScaleDisplay();
-
-    // Auto-rotate badge sync
     syncAutoRotateBtn();
 
-    // Activate AR immediately if requested
     if (tryAR) {
       console.log("[RoomVerse] 🚀 Auto-launching AR after model load");
       setTimeout(() => launchAR(), 400);
     }
 
     showToast(`${product.name} loaded`);
-
-    // Clean up listeners
     viewer.removeEventListener("load", onLoad);
     viewer.removeEventListener("error", onError);
   };
@@ -334,59 +267,49 @@ function openAR(productId, tryAR = false) {
 
   viewer.addEventListener("load", onLoad);
   viewer.addEventListener("error", onError);
-
-  // ── (l) Set src — triggers model fetch ──────────────
   viewer.setAttribute("src", product.model);
+
   console.log(`[RoomVerse] 📡 model-viewer src set to: "${product.model}"`);
 }
 
 // ══════════════════════════════════════════════════════
-// ⑤ LAUNCH AR — activate AR session
+// ⑤ LAUNCH AR
 // ══════════════════════════════════════════════════════
 function launchAR() {
   console.log("[RoomVerse] 🕶️  launchAR() called");
-
   const viewer = document.getElementById("furnitureViewer");
 
-  // ── Guard: no model selected ─────────────────────────
   if (!currentProduct) {
-    console.warn("[RoomVerse] ⚠️  launchAR() — no model selected yet");
+    console.warn("[RoomVerse] ⚠️  launchAR() — no model selected");
     showToast("Please select a furniture item first.");
-    // Scroll to catalog
     document.getElementById("catalog")?.scrollIntoView({ behavior: "smooth" });
     return;
   }
 
-  // ── Guard: viewer not visible / model not loaded ─────
   if (!viewer || viewer.style.display === "none") {
-    console.warn("[RoomVerse] ⚠️  launchAR() — viewer not ready, loading model first");
+    console.warn("[RoomVerse] ⚠️  launchAR() — viewer not ready");
     showToast("Loading model for AR…");
     openAR(currentProduct.id, true);
     return;
   }
 
-  // ── Check AR availability ────────────────────────────
   const canAR = viewer.canActivateAR;
-  console.log(`[RoomVerse] 📱 AR availability: canActivateAR=${canAR}`);
+  console.log(`[RoomVerse] 📱 canActivateAR=${canAR}`);
 
   if (canAR) {
-    // Mobile / AR capable device — activate AR
-    console.log("[RoomVerse] 🚀 Activating AR session via model-viewer.activateAR()");
     try {
       viewer.activateAR();
       console.log("[RoomVerse] ✅ AR session activated");
     } catch (err) {
       console.error("[RoomVerse] ❌ AR activation failed:", err);
-      showToast("AR activation failed. Try the 'View in your room' button in the 3D viewer.");
+      showToast("AR activation failed. Try the 'View in your room' button.");
     }
   } else {
-    // Desktop — AR not directly activatable; 3D viewer is the experience
-    console.log("[RoomVerse] 🖥️  Desktop detected — AR not available, 3D preview active");
+    console.log("[RoomVerse] 🖥️  Desktop — AR not available, 3D preview active");
     showToast("3D preview active. Open on mobile Chrome/Safari for AR.");
-    // Highlight the viewer
     const wrapper = document.getElementById("viewerWrapper");
     if (wrapper) {
-      wrapper.style.outline = "3px solid var(--caramel)";
+      wrapper.style.outline = "3px solid var(--amber)";
       setTimeout(() => { wrapper.style.outline = ""; }, 2000);
     }
   }
@@ -395,35 +318,25 @@ function launchAR() {
 // ══════════════════════════════════════════════════════
 // ⑥ ROTATE MODEL
 // ══════════════════════════════════════════════════════
-/**
- * @param {number} degrees — delta to add to Y rotation.
- *                           Pass 0 to reset to 0°.
- */
 function rotateModel(degrees) {
   const viewer = document.getElementById("furnitureViewer");
   if (!viewer || viewer.style.display === "none") {
-    console.warn("[RoomVerse] ⚠️  rotateModel() — no model loaded");
     showToast("Load a model first.");
     return;
   }
 
   if (degrees === 0) {
-    // Reset rotation
     currentRotationY = 0;
-    console.log("[RoomVerse] 🔄 rotateModel() — reset to 0°");
   } else {
     currentRotationY = (currentRotationY + degrees + 360) % 360;
-    console.log(`[RoomVerse] 🔄 rotateModel() — new Y rotation: ${currentRotationY}°`);
   }
 
-  // Apply via camera-orbit (theta) keeping current radius/phi
   try {
-    const orbit = viewer.getCameraOrbit?.();
+    const orbit  = viewer.getCameraOrbit?.();
     const radius = orbit ? orbit.radius : 2;
     const phi    = orbit ? (orbit.phi * 180 / Math.PI) : 75;
     viewer.cameraOrbit = `${currentRotationY}deg ${phi}deg ${radius}m`;
   } catch (e) {
-    // Fallback: set attribute directly
     viewer.setAttribute("camera-orbit", `${currentRotationY}deg 75deg auto`);
   }
 }
@@ -431,29 +344,16 @@ function rotateModel(degrees) {
 // ══════════════════════════════════════════════════════
 // ⑦ SCALE MODEL
 // ══════════════════════════════════════════════════════
-/**
- * @param {number} delta — amount to add/subtract from scale.
- *                         e.g. 0.2 = +20%, -0.2 = -20%
- */
 function scaleModel(delta) {
   const viewer = document.getElementById("furnitureViewer");
   if (!viewer || viewer.style.display === "none") {
-    console.warn("[RoomVerse] ⚠️  scaleModel() — no model loaded");
     showToast("Load a model first.");
     return;
   }
 
-  const MIN_SCALE = 0.2;
-  const MAX_SCALE = 4.0;
-
-  currentScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, currentScale + delta));
-  console.log(`[RoomVerse] 📐 scaleModel() — new scale: ${currentScale.toFixed(1)}×`);
-
-  // model-viewer supports CSS transform on the host element for visual scaling
-  // but the proper API is via --scale custom property or style transform
-  viewer.style.transform = `scale(${currentScale})`;
+  currentScale = Math.max(0.2, Math.min(4.0, currentScale + delta));
+  viewer.style.transform      = `scale(${currentScale})`;
   viewer.style.transformOrigin = "center bottom";
-
   updateScaleDisplay();
 }
 
@@ -465,15 +365,11 @@ function toggleAutoRotate() {
   if (!viewer) return;
 
   autoRotateOn = !autoRotateOn;
-
   if (autoRotateOn) {
     viewer.setAttribute("auto-rotate", "");
-    console.log("[RoomVerse] 🔁 Auto-rotate ON");
   } else {
     viewer.removeAttribute("auto-rotate");
-    console.log("[RoomVerse] ⏹️  Auto-rotate OFF");
   }
-
   syncAutoRotateBtn();
 }
 
@@ -490,11 +386,7 @@ function syncAutoRotateBtn() {
 // ⑨ RETRY LOAD
 // ══════════════════════════════════════════════════════
 function retryLoad() {
-  if (!lastRetryProduct) {
-    showToast("Nothing to retry.");
-    return;
-  }
-  console.log(`[RoomVerse] 🔁 retryLoad() — retrying "${lastRetryProduct.id}"`);
+  if (!lastRetryProduct) { showToast("Nothing to retry."); return; }
   openAR(lastRetryProduct.id, false);
 }
 
@@ -504,40 +396,33 @@ function retryLoad() {
 function showLoader(text = "Loading…") {
   const loader = document.getElementById("viewerLoader");
   const txt    = document.getElementById("loaderText");
-  if (loader) loader.classList.add("visible");
+  if (loader) loader.style.display = "flex";
   if (txt)    txt.textContent = text;
 }
-
 function hideLoader() {
   const loader = document.getElementById("viewerLoader");
-  if (loader) loader.classList.remove("visible");
+  if (loader) loader.style.display = "none";
 }
-
 function showViewer() {
   const viewer = document.getElementById("furnitureViewer");
   if (viewer) viewer.style.display = "block";
 }
-
 function hideViewer() {
   const viewer = document.getElementById("furnitureViewer");
   if (viewer) viewer.style.display = "none";
 }
-
 function hidePlaceholder() {
   const ph = document.getElementById("viewerPlaceholder");
   if (ph) ph.style.display = "none";
 }
-
 function showPlaceholder() {
   const ph = document.getElementById("viewerPlaceholder");
   if (ph) ph.style.display = "flex";
 }
-
 function hideError() {
   const err = document.getElementById("viewerError");
   if (err) err.style.display = "none";
 }
-
 function showError(msg = "Failed to load model.") {
   const err    = document.getElementById("viewerError");
   const errMsg = document.getElementById("viewerErrorMsg");
@@ -546,12 +431,10 @@ function showError(msg = "Failed to load model.") {
   hidePlaceholder();
   hideLoader();
 }
-
 function showControls() {
   const panel = document.getElementById("controlsPanel");
   if (panel) panel.style.display = "block";
 }
-
 function updateScaleDisplay() {
   const display = document.getElementById("scaleDisplay");
   if (display) display.textContent = `${currentScale.toFixed(1)}×`;
@@ -561,39 +444,39 @@ function updateScaleDisplay() {
 // ⑪ TOAST NOTIFICATION
 // ══════════════════════════════════════════════════════
 let toastTimer = null;
-
 function showToast(message, duration = 3000) {
-  // Create or reuse toast
   let toast = document.getElementById("rvToast");
   if (!toast) {
     toast = document.createElement("div");
     toast.id = "rvToast";
-    toast.className = "toast";
+    toast.style.cssText = `
+      position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(20px);
+      background:#1a1108; border:1px solid rgba(200,137,42,0.4);
+      color:#f5dfa0; padding:12px 28px; border-radius:12px;
+      font-size:14px; font-weight:500; z-index:9999;
+      opacity:0; transition:all 0.3s; pointer-events:none;
+      box-shadow:0 8px 32px rgba(0,0,0,0.5);
+    `;
     document.body.appendChild(toast);
   }
-
   toast.textContent = message;
-
-  // Clear previous timer
   if (toastTimer) clearTimeout(toastTimer);
-
-  // Show
   requestAnimationFrame(() => {
-    toast.classList.add("toast-show");
+    toast.style.opacity = "1";
+    toast.style.transform = "translateX(-50%) translateY(0)";
   });
-
-  // Hide after duration
   toastTimer = setTimeout(() => {
-    toast.classList.remove("toast-show");
+    toast.style.opacity = "0";
+    toast.style.transform = "translateX(-50%) translateY(20px)";
   }, duration);
 }
 
 // ══════════════════════════════════════════════════════
-// ⑫ HEADER NAV ACTIVE STATE
+// ⑫ NAV HIGHLIGHT
 // ══════════════════════════════════════════════════════
 function initNavHighlight() {
   const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll(".nav-link");
+  const navLinks  = document.querySelectorAll(".nav-link");
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -616,22 +499,15 @@ function initNavHighlight() {
 // ══════════════════════════════════════════════════════
 document.addEventListener("DOMContentLoaded", () => {
   console.log("[RoomVerse] 🏠 RoomVerse AI — initialising");
-  console.log("[RoomVerse] 📋 Product count:", PRODUCTS.length);
-
   renderCatalog();
   initNavHighlight();
 
-  // Log AR support info
   const viewer = document.getElementById("furnitureViewer");
   if (viewer) {
     customElements.whenDefined("model-viewer").then(() => {
-      console.log("[RoomVerse] 📦 model-viewer web component defined");
-      console.log("[RoomVerse] 📱 User agent:", navigator.userAgent);
-      console.log("[RoomVerse] 🌐 XR supported:", !!navigator.xr);
+      console.log("[RoomVerse] 📦 model-viewer defined");
     });
-  } else {
-    console.error("[RoomVerse] ❌ CRITICAL: <model-viewer> element missing from DOM");
   }
 
-  console.log("[RoomVerse] ✅ Initialisation complete");
+  console.log("[RoomVerse] ✅ Init complete");
 });
