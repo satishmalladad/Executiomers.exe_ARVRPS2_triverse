@@ -670,9 +670,21 @@
     <p>RoomVerse AI &mdash; WebXR Interior Design &mdash; Built with ❤️ &amp; model-viewer &amp; Claude AI</p>
   </footer>
 
-  <!-- API key loaded securely from server — never hardcoded here -->
-  <script src="/config.js"></script>
   <script src="app.js"></script>
+
+  <!-- Load API key securely from backend before AI Advisor is used -->
+  <script>
+    (async () => {
+      try {
+        const res  = await fetch('/api/env');
+        const data = await res.json();
+        window.OPENROUTER_API_KEY = data.OPENROUTER_API_KEY || '';
+      } catch (e) {
+        console.warn('Could not load API key from /api/env:', e);
+        window.OPENROUTER_API_KEY = '';
+      }
+    })();
+  </script>
 
   <script>
     /* DRAG & DROP UPLOAD */
@@ -725,7 +737,7 @@
 
       const API_KEY = window.OPENROUTER_API_KEY || '';
       if (!API_KEY) {
-        alert('⚠️ API key not configured.\n\nMake sure OPENROUTER_API_KEY is set in your Vercel environment variables and server.js is serving /config.js correctly.');
+        alert('⚠️ API key not configured.\n\nMake sure OPENROUTER_API_KEY is set in your Vercel environment variables.');
         return;
       }
 
