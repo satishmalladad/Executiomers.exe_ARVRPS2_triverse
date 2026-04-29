@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RoomVerse AI — AR Interior Design</title>
+
+  <!-- Google Fonts: Playfair Display + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- model-viewer web component -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════ HEADER ═══════════════════ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-mark">RV</span>
+        <div>
+          <span class="logo-title">RoomVerse</span>
+          <span class="logo-sub">AI Interior Design</span>
+        </div>
+      </div>
+      <nav class="header-nav">
+        <a href="#catalog" class="nav-link active">Catalog</a>
+        <a href="#viewer-section" class="nav-link">3D Viewer</a>
+        <a href="#about" class="nav-link">About</a>
+      </nav>
+      <button class="header-ar-btn" id="headerARBtn" onclick="launchAR()" title="Launch AR with selected model">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9-4 9 4v10l-9 4-9-4V7z"/><path d="M12 3v18M3 7l9 4 9-4"/></svg>
+        Launch AR
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══════════════════ HERO ═══════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-pattern" aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Powered by WebXR</p>
+      <h1 class="hero-headline">See furniture<br /><em>in your space</em></h1>
+      <p class="hero-sub">Browse real furniture models. Preview in 3D on desktop. Place in your room with AR on mobile.</p>
+      <a href="#catalog" class="cta-btn">Browse Collection</a>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-cube c1"></div>
+      <div class="hero-cube c2"></div>
+      <div class="hero-cube c3"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ CATALOG ═══════════════════ -->
+  <section class="section" id="catalog">
+    <div class="section-header">
+      <h2 class="section-title">Furniture Collection</h2>
+      <p class="section-desc">Click any item to preview in 3D. Hit AR to place it in your room.</p>
+    </div>
+    <div class="catalog-grid" id="catalogGrid">
+      <!-- JS renders product cards here -->
+    </div>
+  </section>
+
+  <!-- ═══════════════════ 3D / AR VIEWER ═══════════════════ -->
+  <section class="section viewer-section" id="viewer-section">
+    <div class="section-header">
+      <h2 class="section-title">3D Viewer &amp; AR</h2>
+      <p class="section-desc" id="viewerStatus">Select a product above to begin.</p>
+    </div>
+
+    <div class="viewer-wrapper" id="viewerWrapper">
+
+      <!-- Loader overlay -->
+      <div class="viewer-loader" id="viewerLoader" aria-live="polite">
+        <div class="loader-spinner"></div>
+        <p class="loader-text" id="loaderText">Loading model…</p>
+      </div>
+
+      <!-- Placeholder when nothing selected -->
+      <div class="viewer-placeholder" id="viewerPlaceholder">
+        <div class="placeholder-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 8L56 20V44L32 56L8 44V20L32 8Z" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="M32 8V56M8 20L32 32L56 20" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/>
+          </svg>
+        </div>
+        <p>Choose a furniture item from the catalog</p>
+      </div>
+
+      <!-- THE model-viewer element — all AR attributes pre-set -->
+      <model-viewer
+        id="furnitureViewer"
+        class="model-viewer-el"
+        alt="Furniture AR Preview"
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        ar-scale="auto"
+        ar-placement="floor"
+        camera-controls
+        auto-rotate
+        auto-rotate-delay="2000"
+        rotation-per-second="20deg"
+        shadow-intensity="1.2"
+        shadow-softness="0.8"
+        exposure="1.1"
+        environment-image="neutral"
+        interaction-prompt="auto"
+        loading="eager"
+        reveal="auto"
+        style="display:none;"
+      >
+        <!-- AR button rendered inside model-viewer slot -->
+        <button slot="ar-button" class="mv-ar-btn" id="mvArBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9-4 9 4v10l-9 4-9-4V7z"/></svg>
+          View in your room
+        </button>
+
+        <!-- Hotspot for product name label -->
+        <div class="mv-annotation" slot="hotspot-label" data-surface="0 0 0 0 0 0 0">
+          <span id="mvProductName">Furniture</span>
+        </div>
+      </model-viewer>
+
+      <!-- Error state -->
+      <div class="viewer-error" id="viewerError" style="display:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><circle cx="12" cy="16" r="1" fill="currentColor"/></svg>
+        <p id="viewerErrorMsg">Model could not be loaded.</p>
+        <button onclick="retryLoad()" class="retry-btn">Retry</button>
+      </div>
+    </div>
+
+    <!-- Controls panel -->
+    <div class="controls-panel" id="controlsPanel" style="display:none;">
+      <div class="controls-inner">
+
+        <div class="control-group">
+          <label class="control-label">Rotate</label>
+          <div class="control-btns">
+            <button class="ctrl-btn" onclick="rotateModel(-45)" title="Rotate left">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg>
+            </button>
+            <button class="ctrl-btn" onclick="rotateModel(0)" title="Reset rotation">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
+            </button>
+            <button class="ctrl-btn" onclick="rotateModel(45)" title="Rotate right">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-.49-4.95"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Scale</label>
+          <div class="control-btns">
+            <button class="ctrl-btn" onclick="scaleModel(-0.2)" title="Scale down">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <span class="scale-display" id="scaleDisplay">1.0×</span>
+            <button class="ctrl-btn" onclick="scaleModel(0.2)" title="Scale up">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Auto Rotate</label>
+          <button class="ctrl-btn ctrl-toggle" id="autoRotateBtn" onclick="toggleAutoRotate()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-.49-4.95"/></svg>
+            On
+          </button>
+        </div>
+
+        <div class="control-group launch-group">
+          <button class="launch-ar-btn" onclick="launchAR()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9-4 9 4v10l-9 4-9-4V7z"/></svg>
+            Launch AR
+          </button>
+          <p class="ar-hint">Opens camera on mobile • 3D on desktop</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ ABOUT ═══════════════════ -->
+  <section class="section about-section" id="about">
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7l9-4 9 4v10l-9 4-9-4V7z"/></svg>
+        </div>
+        <h3>WebXR Powered</h3>
+        <p>Uses the latest WebXR, Scene Viewer (Android), and Quick Look (iOS) for true augmented reality in the browser.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <h3>Real Furniture Models</h3>
+        <p>All models are real .glb furniture assets — sofa, chair, dining table — not placeholders or generic demos.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Instant Preview</h3>
+        <p>Click any product to see it in the 3D viewer instantly. Rotate and scale before committing to AR placement.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FOOTER ═══════════════════ -->
+  <footer class="site-footer">
+    <p>RoomVerse AI &mdash; WebXR Interior Design &mdash; Built with ❤️ &amp; model-viewer</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
