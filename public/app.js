@@ -78,6 +78,97 @@ const PRODUCTS = [
              <line x1="54" y1="36" x2="54" y2="44"/>
            </svg>`,
   },
+  {
+  id: "lamp-01",
+  name: "Arc Floor Lamp",
+  category: "Lighting",
+  price: "$129",
+  desc: "Minimalist arc lamp with brass finish. Perfect bedside or reading light.",
+  model: "models/floor_lamp.glb",
+  cameraOrbit: "0deg 75deg 1.5m",
+  icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+           <line x1="32" y1="56" x2="32" y2="20"/>
+           <path d="M32 20 Q48 20 48 10 Q48 4 32 4 Q16 4 16 10 Q16 20 32 20"/>
+           <ellipse cx="32" cy="56" rx="12" ry="3"/>
+         </svg>`,
+},
+{
+  id: "bed-01",
+  name: "Oslo Platform Bed",
+  category: "Bedroom",
+  price: "$799",
+  desc: "Low-profile king bed in walnut veneer. Clean Scandinavian lines.",
+  model: "models/platform_bed.glb",
+  cameraOrbit: "-20deg 70deg 3m",
+  icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+           <rect x="4" y="32" width="56" height="20" rx="3"/>
+           <rect x="4" y="24" width="56" height="10" rx="2"/>
+           <rect x="6" y="14" width="20" height="18" rx="3"/>
+           <rect x="38" y="14" width="20" height="18" rx="3"/>
+           <line x1="10" y1="52" x2="10" y2="58"/>
+           <line x1="54" y1="52" x2="54" y2="58"/>
+         </svg>`,
+},
+{
+  id: "plant-01",
+  name: "Fiddle Leaf Fig",
+  category: "Decor",
+  price: "$49",
+  desc: "Large indoor plant in a terracotta pot. Brings life to any corner.",
+  model: "models/plant.glb",
+  cameraOrbit: "0deg 75deg 1.8m",
+  icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+           <path d="M32 52 Q32 30 20 18 Q32 22 38 14 Q36 28 32 52"/>
+           <path d="M32 52 Q32 36 44 24 Q44 38 32 52"/>
+           <rect x="22" y="50" width="20" height="10" rx="3"/>
+         </svg>`,
+},
+{
+  id: "tvstand-01",
+  name: "Media Console",
+  category: "Living Room",
+  price: "$349",
+  desc: "Floating TV unit with oak drawers. Fits TVs up to 65 inches.",
+  model: "models/tv_stand.glb",
+  cameraOrbit: "0deg 65deg 2.5m",
+  icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+           <rect x="4" y="30" width="56" height="18" rx="3"/>
+           <rect x="8" y="34" width="20" height="10" rx="2"/>
+           <rect x="36" y="34" width="20" height="10" rx="2"/>
+           <line x1="14" y1="48" x2="14" y2="56"/>
+           <line x1="50" y1="48" x2="50" y2="56"/>
+         </svg>`,
+},
+{
+  id: "wardrobe-01",
+  name: "Hinoki Wardrobe",
+  category: "Bedroom",
+  price: "$649",
+  desc: "3-door wardrobe in natural hinoki wood with soft-close hinges.",
+  model: "models/wardrobe.glb",
+  cameraOrbit: "15deg 75deg 3m",
+  icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+           <rect x="6" y="8" width="52" height="52" rx="2"/>
+           <line x1="32" y1="8" x2="32" y2="60"/>
+           <circle cx="28" cy="34" r="2" fill="currentColor"/>
+           <circle cx="36" cy="34" r="2" fill="currentColor"/>
+         </svg>`,
+},
+{
+  id: "desk-01",
+  name: "Studio Writing Desk",
+  category: "Office",
+  price: "$299",
+  desc: "Compact work desk with cable management. Ideal for home offices.",
+  model: "models/desk.glb",
+  cameraOrbit: "-10deg 70deg 2m",
+  icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5">
+           <rect x="4" y="24" width="56" height="8" rx="2"/>
+           <line x1="10" y1="32" x2="8" y2="56"/>
+           <line x1="54" y1="32" x2="56" y2="56"/>
+           <rect x="36" y="32" width="16" height="14" rx="2"/>
+         </svg>`,
+},
 ];
 
 // ══════════════════════════════════════════════════════
